@@ -1,0 +1,54 @@
+﻿@model IEnumerable<PhoneBook.Models.Abonent>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Birthday)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Numbers)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.AbonentId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.AbonentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.AbonentId })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Birthday)
+        </td>
+        <td>
+            @foreach (var number in item.Numbers)
+            {
+                @Html.DisplayFor(model => number.Phone)
+            }
+        </td>
+    </tr>
+}
+
+</table>
